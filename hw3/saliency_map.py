@@ -8,7 +8,7 @@ from keras.models import load_model, Sequential, Model
 from vis.utils import utils
 from vis.visualization import visualize_saliency
 from PIL import Image
-
+from keras import backend as K
 K.set_image_data_format("channels_first")
 K.set_image_dim_ordering("th")
 

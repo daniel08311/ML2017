@@ -62,19 +62,21 @@ def run_keras(X_train,Y_train):
     print (model.summary())
     opt = keras.optimizers.adam(lr=0.001)
     model.compile(loss='mean_squared_logarithmic_error',optimizer=opt)#,metrics=['accuracy'])
-    model.fit(X_train, Y_train, batch_size=30000,epochs=3200)
+    model.fit(X_train, Y_train, batch_size=20000,epochs=3000)
     return model
 
 
 npz = sys.argv[1]
 output = sys.argv[2]
 
-SET = 2000
+print ("generate start")
+SET = 1500
 # if we want to generate data with intrinsic dimension of 10
 means = np.zeros((60,SET,200))
 for dim in range(60):
+    print (dim)
     for i in range(SET):
-        N = 2500
+        N = 300
         # the hidden dimension is randomly chosen from [60, 79] uniformly
         layer_dims = [np.random.randint(60, 80), 100]
         datas = gen_data(dim+1, layer_dims, N)
@@ -113,6 +115,3 @@ csv.write("SetId,LogDim\n")
 for i in range(len(predict)):
     csv.write(str(i) + "," + str(predict[i][0]) + "\n")
 csv.close()
-
-
-

@@ -609,7 +609,7 @@ def predict(test,train,model):
         last.append(p)
     return prediction
 
-THRESHOLD = [0.05]
+THRESHOLD = [0.0]
 TRAIN_PATH = sys.argv[1]
 TEST_PATH = sys.argv[2]
 LABEL_PATH = sys.argv[3]
